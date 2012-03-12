@@ -56,7 +56,7 @@ underscore-prefixed versions (`_get()`, `_shrug()`, etc) instead.
 There are a few additional features planned or not explained, so stay tuned if
 you are interested.
 
-# Why should I use hug instead of jQuery for DOM objects?
+## Why should I use `hug` instead of jQuery for DOM objects?
 
 Because jQuery is too mainstream, man. In seriousness though, you should just 
 use jQuery unless you are too hipster for it, since jQuery does a lot more than
@@ -67,22 +67,22 @@ DOM interfaces, so if you're stuck without jQuery, you'll still know how to
 actually do DOM manipulation, at the cost of typing 
 overlyVerboseCamelCaseFunctions all the time.
 
-# Why should I use hug instead of real javascript Proxy objects?
+## Why should I use `hug` instead of real javascript Proxy objects?
 
 Only Rhino and Spidermonkey support them by default, and they're, like, so
 underground that they're mainstream, you know what I mean, man?
 
-# Why call it hug instead of something descriptive, like chain?
+## Why call it `hug` instead of something descriptive, like chain?
 
 `chain` isn't cute enough to fill the hole in my heart ;_;
 
-# How does this work?
+## How does this work?
 
 `Object.getOwnPropertyNames()`, `Object.getPrototypeOf()`, and a healthy dose
 of metaprogramming. I'll fill you in on more of the details when I get around
 to it.
 
-# Now what?
+## Now what?
 
 `hug` is just a hobby project, so don't expect too much. I've got plans in my
 head for the following additional features though:
@@ -104,3 +104,6 @@ head for the following additional features though:
 6. Test suite and npm-compatible version (mostly as an excercise in making
    production-suitable javascript plugins, but also so anybody actually 
    interested in using hug won't have to jump through too many hoops).
+7. Some way of wrapping Array/array-like objects to apply proxied
+   methods to all objects in the array, for even more jQuery-emulating ability.
+   I could call it `group_hug` for even more cuteness.

@@ -22,8 +22,10 @@ function Hug( object, parents ) {
         if( callback ) {
             callback( result, object, parents.slice() );
             return this;
-        } else {
+        } else if( typeof result === "object" ) {
             return new Hug( result, parents.concat( this ) );
+        } else {
+            return result;
         }
     };
     
