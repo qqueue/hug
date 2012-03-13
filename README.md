@@ -5,23 +5,25 @@ your mind off the sad state of your social life:
 
 ```javascript
 
-var birthday = Hug( new Date() )
+var birthday = hug( new Date() )
     .setMonth( 8 )
     .setDate( 15 )
     .it();
     
-Hug( document.getElementById('blog') )
+hug( document.getElementById('blog') )
     .classList()
         .add( 'festive' )
+				.add( 'cake' )
     .shrug()
-    .style()
-        .backgroundColor( 'hotPink' )
-    .shrug()
+    .style({
+      backgroundColor: 'hotPink'
+			border: '1px dotted'
+    })
     .querySelector( '.updated' ).that()
         .textContent( "just now" )
     .shrug()
     .querySelector( '.content' ).that( function(el) {
-        this.textContent = 
+        el.textContent = 
             "My birthday is on " + birthday + ".\n\
             Will anybody come to my party?";
     });
@@ -29,9 +31,14 @@ Hug( document.getElementById('blog') )
 
 ## Installation and Usage
 
-You can't yet, because it's still under development. Browser and Node.js support
-will be easy once it it's done though, so try to bear the crushing lonliness
-just a little longer.
+`hug.js` attaches itself as `hug` to the window in browsers, or as 
+`exports` in a node.js environment when used with 'require()'.
+NPM/AMD-compatible versions incoming, once I figure out how they work.
+
+Usage should be natural if you've ever used jQuery before, though since
+the method names are directly from the DOM, keep the
+[MDN DOM Reference](https://developer.mozilla.org/en/DOM) open in a new tab
+if you're not familar with it.
 
 # Explain further
 
@@ -72,15 +79,12 @@ overlyVerboseCamelCaseFunctions all the time.
 Only Rhino and Spidermonkey support them by default, and they're, like, so
 underground that they're mainstream, you know what I mean, man?
 
-## Why call it `hug` instead of something descriptive, like chain?
-
-`chain` isn't cute enough to fill the hole in my heart ;_;
-
 ## How does this work?
 
 `Object.getOwnPropertyNames()`, `Object.getPrototypeOf()`, and a healthy dose
 of metaprogramming. I'll fill you in on more of the details when I get around
-to it.
+to it. The source is commented however, and it's only 200 lines, so could
+read it if you wanted to.
 
 ## Now what?
 
@@ -89,21 +93,20 @@ head for the following additional features though:
 
 1. A generator for huggers for specific classes, to avoid the cost of
    creating all the proxied methods each time a new object is called.
-2. Blacklists and Whitelists, to affect which attributes get proxied.
-3. Replacer/renamers, so prefixed methods like moz/webkitMatchesSelector will
+2. Replacer/renamers, so prefixed methods like moz/webkitMatchesSelector will
    be proxied simply as matchesSelector.
-4. Custom chained methods (with generators) to add methods not on the 
+3. Custom chained methods (with generators) to add methods not on the 
    original object like `on()` event attachment. Essentially, re-create
    jQuery at runtime, instead of manually-coded.
-5. `hug` currently only looks at the first prototype of the object (and the
+4. `hug` currently only looks at the first prototype of the object (and the
    object itself) to find attributes to proxy, so objects with long prototype
    chains will be missing proxied methods. Walking all the way up the prototype
    chain is easy, but generates lots of duplicate methods for objects like
    DOM Elements, so to support these I first have to figure out how to filter
    duplicates efficiently.
-6. Test suite and npm-compatible version (mostly as an excercise in making
+5. Test suite and npm-compatible version (mostly as an excercise in making
    production-suitable javascript plugins, but also so anybody actually 
    interested in using hug won't have to jump through too many hoops).
-7. Some way of wrapping Array/array-like objects to apply proxied
+6. Some way of wrapping Array/array-like objects to apply proxied
    methods to all objects in the array, for even more jQuery-emulating ability.
    I could call it `group_hug` for even more cuteness.
