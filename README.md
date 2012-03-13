@@ -11,22 +11,22 @@ var birthday = hug( new Date() )
     .it();
     
 hug( document.getElementById('blog') )
-    .classList()
-        .add( 'festive' )
-				.add( 'cake' )
-    .shrug()
-    .style({
-      backgroundColor: 'hotPink'
-			border: '1px dotted'
-    })
-    .querySelector( '.updated' ).that()
-        .textContent( "just now" )
-    .shrug()
-    .querySelector( '.content' ).that( function(el) {
-        el.textContent = 
-            "My birthday is on " + birthday + ".\n\
-            Will anybody come to my party?";
-    });
+	.classList()
+		.add( 'festive' )
+		.add( 'cake' )
+	.shrug()
+	.style({
+		backgroundColor: 'hotPink'
+		border: '1px dotted'
+	})
+	.querySelector( '.updated' ).that()
+		.textContent( "just now" )
+	.shrug()
+	.querySelector( '.content' ).that( function(el) {
+		el.textContent = 
+			"My birthday is on " + birthday + "." +
+			"Will anybody come to my party?";
+	});
 ```
 
 ## Installation and Usage
